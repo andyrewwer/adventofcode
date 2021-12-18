@@ -5,8 +5,6 @@ file_name = 'input.csv' if len(sys.argv) < 2 else sys.argv[1]
 
 with open(file_name) as csv_file:
     data = list(csv.reader(csv_file))
-    count = -1 #offset first row
-    prev = 0
     zeros = []
     ones = []
     for i in range(len(data)):
