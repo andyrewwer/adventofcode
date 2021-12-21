@@ -16,7 +16,7 @@ def is_open(symbol):
     return symbol in ['(', '[', '{', '<']
 
 def matches_close(match_symbol, next_item):
-zsh:1: command not found: qq
+    return (match_symbol == '(' and next_item == ')') or (match_symbol == '[' and next_item == ']') or (match_symbol == '{' and next_item == '}') or (match_symbol == '<' and next_item == '>')
 
 with open(file_name) as file:
     data = file.read().splitlines()
