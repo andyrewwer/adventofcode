@@ -10,7 +10,7 @@ with open(file_name) as file:
         points.append([])
         for j in range(1311):
         #for j in range(11):
-            points[i].append(0)
+            points[i].append('.')
     
     instruction_count = 0
     for i in range(len(data)):
@@ -21,7 +21,7 @@ with open(file_name) as file:
         elif data[i][0].isnumeric():
             print('building data')
             xy = data[i].split(',')
-            points[int(xy[1])][int(xy[0])] = 1
+            points[int(xy[1])][int(xy[0])] = '#'
         else:
             instruction_count += 1
             instructions = data[i][11:].split('=')
@@ -35,8 +35,8 @@ with open(file_name) as file:
                     upper_row = points[fold-length]
                     lower_row = points[fold+1]
                     for j in range(len(upper_row)):
-                        if lower_row[j] == 1:
-                            points[fold-length][j] = 1
+                        if lower_row[j] == '#':
+                            points[fold-length][j] = '#'
                     points.pop(fold+1)
                     length += 1
             if instructions[0] == 'x':
@@ -49,12 +49,12 @@ with open(file_name) as file:
                             break
                         right = points[j][fold+1]
                         left = points[j][fold-length]
-                        if right == 1:
-                            points[j][fold-length] = 1
+                        if right == '#':
+                            points[j][fold-length] = '#'
                         points[j].pop(fold+1)
                         length += 1
-            if instruction_count == 1:
-                break
+          #  if instruction_count == 1:
+               # break
 
     _sum = 0
     for row in points:
